@@ -85,4 +85,17 @@ open class FPNCountryRepository {
 		countries = getAllCountries(excluding: countryCodes)
 	}
 
+	open static func getFlagImage(for countryCode: FPNCountryCode) -> UIImage? {
+    	let imageName = countryCode.rawValue
+    
+    	// SPM way
+    	if let image = UIImage(named: imageName, in: Bundle.module, compatibleWith: nil) {
+        	return image
+    	}
+    
+    	// Fallback for CocoaPods/Frameworks
+    	let frameworkBundle = Bundle(for: FPNCountryRepository.self)
+    	return UIImage(named: imageName, in: frameworkBundle, compatibleWith: nil)
+	}
+	
 }
