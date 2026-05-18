@@ -27,11 +27,11 @@ let package = Package(
         .target(
             name: "FlagPhoneNumber",
             dependencies: ["libPhoneNumber"],
+            path: "Sources",
+            exclude: ["Info.plist", "libPhoneNumber"],
             resources: [
                 .process("Resources")
-            ],
-            path: "Sources",
-            exclude: ["Info.plist", "libPhoneNumber"]
+            ]
         ),
     ]
 )
