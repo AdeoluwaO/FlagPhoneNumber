@@ -30,7 +30,8 @@ let package = Package(
             resources: [
                 .process("Resources")
             ],
-            path: "Sources/FlagPhoneNumber"  // point directly to the Swift sources
+            path: "Sources",
+            exclude: ["Info.plist", "libPhoneNumber"]
         ),
     ]
 )
