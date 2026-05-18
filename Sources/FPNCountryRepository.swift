@@ -22,7 +22,13 @@ open class FPNCountryRepository {
 	private func getAllCountries() -> [FPNCountry] {
 		let bundle: Bundle = Bundle.FlagPhoneNumber()
 		let resource: String = "countryCodes"
-		let jsonPath = bundle.path(forResource: resource, ofType: "json")
+		var jsonPath = bundle.path(forResource: resource, ofType: "json")
+
+		#if SWIFT_PACKAGE
+    	if jsonPath == nil {
+        jsonPath = Bundle.module.path(forResource: resource, ofType: "json")
+    	}
+    	#endif
 
 		assert(jsonPath != nil, "Resource file is not found in the Bundle")
 
